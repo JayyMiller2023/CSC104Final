@@ -4,29 +4,355 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Broken Tavern Tales - Home Page</title>
+    <link rel="stylesheet" href="Jayystyle2.css">
 </head>
 <body>
+    <!-- * Heading for the top of the page * -->
     <header>
-        <h1>Broken Tavern Tales</h1>
 
-        <!-- Adding a menu -->
+        <img src="BTT.png">
+
+        <h1>Broken Tavern Tales</h1>
+ 
+        <!-- ! Links connected ! -->
         <nav>
-            <!-- Unordered list -->
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Story 1</a></li>
-                <li><a href="#">Story 2</a></li>
-                <li><a href="#">Story 3</a></li>
-                <li><a href="#">About Me</a></li>
+                <li><a href="file:///C:/Users/natil/Documents/CSC104/Assignment4.1HTML.html">Home</a></li>
+                <li><a href="file:///C:/Users/natil/Documents/CSC104/Assignment4.1part2.html">About Me</a></li>
+                <li><a href="file:///C:/Users/natil/Documents/CSC104/Assignment4.1part3.html">Contacts</a></li>
             </ul>
         </nav>
     </header>
+    <!-- * Instructions used in the sidebar content * -->
 
-    <Main>
-        <p>Welcome to the Broken Tavern Tales, Where interesting one-shot stories are taken place! We hope these tales will peaque your interest and you have lots of fun in our site! You can choose between an action packed </p>
-        <a href="#">Story 1</a>
-        <a href="#">Story 2</a>
-        <a href="#">Story 3</a>
-    </Main>
+    <!-- * Greeting message and story box content * -->
+    <main>
+        <p>Welcome to the Broken Tavern Tales, Where interesting one-shot stories are taken place! 
+            We hope these tales will peaque your interest and you have lots of fun in our site! 
+            You can choose between an action packed Adventure, a mystery discovering Apocolypse, 
+            or an Hair-raising Action story. Take your pick.</p>
+        <!-- ! Made in a story box content thing is all the button placeholders !
+          ! and the prompt which will be hooked up using some javascript techniques !
+          ! which I hope should at least have some simularities as any other programming language. !--> 
+
+
+        <div class="Story_box">
+            <div id="Prompt">[Placeholder here]</div>
+            <div id="Option1"><button>[Button placeholder]</button></div>
+            <div id="Option2"><button>[Button placeholder]</button></div>
+            <div id="Option3"><button>[Button placeholder]</button></div>
+        </div>
+
+        <div class="Guidebar">
+            <!-- ! The Instructions ! -->
+            <aside>
+                Instructions: Use the three buttons to navigate to an ending. 
+                if you get stuck, use the home button to reset the page or the 
+                reload button on the tool bar above. thank you and have a fun time!
+            </aside>
+        </div>
+
+    </main>
+    <!-- * Footer to make a copyright claim * -->
+    <footer>
+        <p>Copyright 2024 Broken Tavern Tales. All rights reserved </p>
+    </footer>
 </body>
+<!-- ! I descovered that I can't do Javascript so I had to resort to using AI, Forgive me. ! -->
+<script>
+    let currentStory = ""; // Variable to track the current story
+
+    // Function to show the main menu
+    function showMainMenu() {
+        const promptText = "Hello! Which story would you like to do?";
+        const option1Text = "Action";
+        const option2Text = "Adventure";
+        const option3Text = "Apocalypse";
+
+        // Update the HTML elements with the main menu prompt and options
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        // Ensure all buttons are visible
+        document.getElementById('Option3').style.display = ''; // Reset visibility in case it was hidden
+
+        resetButtonListeners();
+
+        // Event listeners for story selection
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            currentStory = "Action";
+            startActionStory();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            currentStory = "Adventure";
+            startAdventureStory();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            currentStory = "Apocalypse";
+            startApocalypseStory();
+        });
+    }
+
+    // Function to start the action story
+    function startActionStory() {
+        const promptText = "You're chasing down a rogue agent with a stolen weapon. What will you do next?";
+        const option1Text = "Accelerate and try to ram their car!";
+        const option2Text = "Take a shortcut through the alleyway!";
+        const option3Text = "Fire an EMP pulse to disable their vehicle!";
+
+        // Update the HTML elements with the new prompt and button options
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        // Add event listeners for the action story options
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You ram their car with full force! The impact causes sparks to fly, but the rogue agent keeps going!");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You swerve into a narrow alley, cutting off the rogue agent! You're now neck and neck!");
+            continueActionStory();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You fire an EMP pulse! The enemy vehicle shuts down in a storm of electrical sparks. You've stopped them!");
+            offerReturnToMainMenu();
+        });
+    }
+
+    // Function to continue the action story after Option 2
+    function continueActionStory() {
+        const promptText = "You're neck and neck with the rogue agent! They are reaching for something in their car. What will you do?";
+        const option1Text = "Ram them into the alley wall!";
+        const option2Text = "Grab your sidearm and fire at their tires!";
+        const option3Text = "Leap out of your car and onto theirs!";
+
+        // Update the HTML elements with the new prompt and button options
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        // Add event listeners for the new options
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You slam into the rogue agent's car, sending them crashing into the alley wall! Sparks fly, but they recover and keep going!");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You pull out your sidearm and fire at their tires! The bullet hits, but the rogue agent's car is reinforced, and it barely slows them down.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("In a daring move, you leap onto their car! The rogue agent tries to shake you off, but you're holding on tight!");
+            offerReturnToMainMenu();
+        });
+    }
+        
+    // Function to reset button listeners
+    function resetButtonListeners() {
+        const buttons = ['Option1', 'Option2', 'Option3'];
+        buttons.forEach(function(id) {
+            const button = document.getElementById(id).querySelector('button');
+            const newButton = button.cloneNode(true); // Clones and removes event listeners
+            button.parentNode.replaceChild(newButton, button);
+        });
+    }
+
+    // Function to start the Adventure Story
+    function startAdventureStory() {
+        const promptText = "You stand before the ancient temple, its towering structure covered in vines. There is a large stone door, half-buried in the earth, with strange carvings around it. To your right, you notice a dark cave that seems to lead underground. What will you do?";
+        const option1Text = "Enter the ancient temple.";
+        const option2Text = "Investigate the cave entrance.";
+        const option3Text = "Examine the strange carvings on the stone door.";
+
+        // Update the HTML elements with the adventure prompt and options
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        // Add event listeners for the adventure options
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You push the heavy stone door open and step inside the temple.");
+            enterTemple();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You cautiously approach the dark cave.");
+            investigateCave();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You carefully examine the strange carvings.");
+            examineCarvings();
+        });
+    }
+
+    // Adventure story continuation functions
+    function enterTemple() {
+        const promptText = "You push the heavy stone door open, and a burst of stale air rushes out. Inside, the temple is dimly lit by beams of sunlight streaming through cracks in the ceiling. In the center of the room, you see a pedestal with a golden statue. However, the ground looks unstable, and there are strange markings on the walls.";
+        const option1Text = "Walk carefully toward the golden statue.";
+        const option2Text = "Inspect the strange markings on the walls.";
+        const option3Text = "Turn back and leave the temple.";
+
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("The ground shifts beneath you as you approach the golden statue...you fall into a creavice.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("The markings seem to tell an ancient story...and where to find an artifact.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You decide to leave the temple.");
+            offerReturnToMainMenu();
+        });
+    }
+
+    function investigateCave() {
+        const promptText = "The cave is dark and damp. You can hear the sound of dripping water. As you venture deeper, you find an underground river flowing through the cave.";
+        const option1Text = "Try to cross the river.";
+        const option2Text = "Follow the river upstream.";
+        const option3Text = "Turn back and return to the surface.";
+
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You carefully try to cross the river...only to find yourself drowning.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You decide to follow the river upstream...and at the end you are met with a huge jewel.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You turn back and return to the surface.");
+            offerReturnToMainMenu();
+        });
+    }
+
+    function examineCarvings() {
+        const promptText = "As you examine the carvings, you realize they depict an ancient ritual. Suddenly, you hear a rumble behind you!";
+        const option1Text = "Run deeper into the temple.";
+        const option2Text = "Try to climb to higher ground.";
+        const option3Text = "Stay and investigate the sound.";
+
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You dash deeper into the temple... and find a stash of gold!");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You quickly climb to higher ground...only to be met with a trap.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You stay and investigate the sound...it was a bat.");
+            offerReturnToMainMenu();
+        });
+    }
+
+    // Function to start the Apocalypse story
+    function startApocalypseStory() {
+        const promptText = "You wake up in a world ravaged by a nuclear apocalypse. The air is thick with ash, and the sun barely shines through the clouds. As you step outside, you see remnants of civilization scattered around. You hear distant screams and the growls of mutated creatures.";
+        const option1Text = "Search for supplies in a nearby ruined building.";
+        const option2Text = "Head towards the sounds of screaming.";
+        const option3Text = "Look for other survivors in the wasteland.";
+
+        // Update the HTML elements with the new prompt and button options
+        document.getElementById('Prompt').textContent = promptText;
+        document.getElementById('Option1').querySelector('button').textContent = option1Text;
+        document.getElementById('Option2').querySelector('button').textContent = option2Text;
+        document.getElementById('Option3').querySelector('button').textContent = option3Text;
+
+        document.getElementById('Option3').style.display = ''; 
+
+        resetButtonListeners();
+
+        // Add event listeners for the Apocalypse story options
+        document.getElementById('Option1').querySelector('button').addEventListener('click', function() {
+            alert("You rummage through the ruins, finding some canned food and a rusty knife. you use them to investigate the outside world and look for safety.");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            alert("You rush towards the screams, ready to help, but find a group of mutated creatures instead!");
+            offerReturnToMainMenu();
+        });
+        document.getElementById('Option3').querySelector('button').addEventListener('click', function() {
+            alert("You start wandering the wasteland, looking for signs of life, when you find a nearby camp to settle in.");
+            offerReturnToMainMenu();
+        });
+    }
+
+    // Function to offer returning to the main menu
+    function offerReturnToMainMenu() {
+        const returnText = "Do you want to return to the main menu?";
+        const yesText = "Yes";
+        const noText = "No";
+
+        // Update the HTML elements with return options
+        document.getElementById('Prompt').textContent = returnText;
+        document.getElementById('Option1').querySelector('button').textContent = yesText;
+        document.getElementById('Option2').querySelector('button').textContent = noText;
+        document.getElementById('Option3').style.display = 'none'; // Hide the third option
+
+        resetButtonListeners();
+
+        // Add event listeners for returning to main menu
+        document.getElementById('Option1').querySelector('button').addEventListener('click', showMainMenu);
+        document.getElementById('Option2').querySelector('button').addEventListener('click', function() {
+            if (currentStory === "Action") {
+                startActionStory();  // Replay the Action story
+            } else if (currentStory === "Adventure") {
+                startAdventureStory();  // Replay the Adventure story
+            } else if (currentStory === "Apocalypse") {
+                startApocalypseStory();  // Replay the Apocalypse story
+            }
+        });
+    }
+
+    // Start the game by showing the main menu
+    window.onload = showMainMenu;
+</script>
+
+
+
+
 </html>
